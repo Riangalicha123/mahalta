@@ -60,10 +60,18 @@
                                 </div>
                            </div>
                         </form> -->
-                        <form class="room_reservation_form">
+                        <form class="room_reservation_form" action="" method="POST">
                            <div class="row " >
+                           <div class="col-md-6">
+                                    <label for="full_name">Email</label>
+                                    <input class="online_book" type="text" name="full_name" required>
+                              </div>
                               <div class="col-md-6">
-                                    <label for="full_name">Full Name</label>
+                                    <label for="full_name">First Name</label>
+                                    <input class="online_book" type="text" name="full_name" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="full_name">Last Name</label>
                                     <input class="online_book" type="text" name="full_name" required>
                               </div>
                               <div class="col-md-6">
@@ -71,27 +79,31 @@
                                     <input class="online_book" type="tel" name="contact_number" required>
                               </div>
                               <div class="col-md-6">
-                                    <label for="arrival_date">Arrival Date</label>
+                                    <label for="full_name">Address</label>
+                                    <input class="online_book" type="text" name="full_name" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="arrival_date">Check In Date</label>
                                     <input class="online_book" type="date" name="arrival_date" required>
                               </div>
                               <div class="col-md-6">
-                                    <label for="departure_date">Departure Date</label>
+                                    <label for="departure_date">Check Out Date</label>
                                     <input class="online_book" type="date" name="departure_date" required>
                               </div>
                               <div class="col-md-6">
-                                    <label for="capacity">Number of Persons</label>
+                                    <label for="capacity">Number of Guest</label>
                                     <input class="online_book" type="number" name="capacity" min="1" required>
                               </div>
                               
                               <div class="col-md-6">
                                     <label for="room_type">Room Type</label>
                                     <select class="online_book" name="room_type" required>
-                                       <option value="standard">Deluxe</option>
-                                       <option value="deluxe">Executive</option>
-                                       <option value="suite">Premium</option>
-                                       <option value="deluxe">Family</option>
-                                       <option value="suite">Boutique</option>
-                                       <option value="deluxe">Presidential</option>
+                                       <option value="standard">Deluxe Room</option>
+                                       <option value="deluxe">Executive Room</option>
+                                       <option value="suite">Premium Room</option>
+                                       <option value="deluxe">Family Room</option>
+                                       <option value="suite">Boutique Room</option>
+                                       <option value="deluxe">Presidential Room</option>
                                     </select>
                               </div>
                               <div class="col-md-12">

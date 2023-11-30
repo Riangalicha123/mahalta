@@ -45,14 +45,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
 $router->get('/', 'MainController::home');
-$router->get('/about', 'MainController::about');
 $router->get('/room', 'MainController::room');
 $router->get('/gallery', 'MainController::gallery');
 $router->get('/blog', 'MainController::blog');
 $router->get('/contact', 'MainController::contact');
 
 $router->get('/login', 'UserController::index');
-$router->post('/insert', 'UserController::register');
-$router->post('/loginAuth', 'UserController::login');
+$router->match('registerAuth', 'UserController::registerAuth', 'GET|POST');
 
+$router->match('loginAuth', 'UserController::loginAuth', 'GET|POST');
+$router->get('logout', 'UserController::logout');
 $router->get('/admin-dashboard', 'AdminController::dashboard');
+
+$router->get('/admin-guest', 'AdminController::guest');
+$router->get('/admin-room', 'AdminController::room');
+$router->get('/admin-roombooking', 'AdminController::booking');

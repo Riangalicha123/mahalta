@@ -262,9 +262,10 @@
 <body>
     
 <div class="container" id="container">
+
 	<div class="form-container sign-up-container">
         
-		<form action="<?=site_url('insert');?>" method="post">
+		<form action="<?=site_url('registerAuth');?>" method="POST">
         
             
 			<h1>Create Account</h1>
@@ -281,8 +282,30 @@
 			<button type="submit">Sign Up</button>
 		</form>
 	</div>
+    
 	<div class="form-container sign-in-container">
-        <form action="<?=site_url('loginAuth');?>" method="post">
+    <?php if (!empty($_SESSION['errors'])): ?>
+            <div class="alert alert-danger mt-3" role="alert">
+                <strong class="font-weight-bold">Error!</strong>
+                <span class="d-block">
+                    <?php
+                    // Ensure $_SESSION['errors'] is an array
+                    $errorMessages = is_array($_SESSION['errors']) ? $_SESSION['errors'] : [$_SESSION['errors']];
+                    echo implode('<br>', $errorMessages);
+                    ?>
+                </span>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($_SESSION['success'])): ?>
+            <div class="alert alert-success mt-3" role="alert">
+                <strong class="font-weight-bold">Success!</strong>
+                <span class="d-block">
+                    <?php echo $_SESSION['success']; ?>
+                </span>
+            </div>
+        <?php endif; ?>
+        <form action="<?=site_url('loginAuth');?>" method="POST">
 			<h1>Sign in</h1>
             
 			<div class="social-container">
@@ -291,7 +314,7 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
 			</div>
 			<!-- <span>or use your account</span> -->
-			<input type="type" id="username" name="username" placeholder="Username"/>
+			<input type="type" id="email" name="email" placeholder="Email"/>
 			<input type="password" id="password" name="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>

@@ -1,3 +1,7 @@
+<?php
+// Assuming this is part of a larger PHP file
+$LAVA = lava_instance();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

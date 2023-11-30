@@ -4,7 +4,7 @@
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="public/images/loading.gif" alt="#"/></div>
+         <div class="loader"><img src="public/images/mahaltalogoo.png" alt="#"/></div>
       </div>
       <!-- end loader -->
       <!-- header -->
@@ -45,9 +45,11 @@
                               <li class="nav-item active">
                                  <a class="nav-link" href="/feedback">Feedback</a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="/login">Login</a>
-                              </li>
+                              <?php if ($LAVA->is_logged_in()): ?>
+                              <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>">Logout</a></li>
+                              <?php else: ?>
+                              <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
+                              <?php endif; ?>
                               <li class="nav-item">
                               <button type="submit" class="nav-link"><i class="fa fa-search"></i></button>
                               </li>

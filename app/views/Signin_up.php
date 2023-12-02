@@ -303,7 +303,7 @@
                 <span class="d-block">
                     <?php echo $_SESSION['success']; ?>
                 </span>
-            </div>
+            </div>  
         <?php endif; ?>
         <form action="<?=site_url('loginAuth');?>" method="POST">
 			<h1>Sign in</h1>

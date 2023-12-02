@@ -53,7 +53,7 @@
 			href="public/admin/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="public/admin/vendors/styles/style.css" />
-
+    
 		
 	</head>
 	<body>
@@ -383,8 +383,8 @@
 								><span class="mtext">Hotel</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="<?=site_url('admin-room');?>"  >Room</a></li>
 								<li><a href="<?=site_url('admin-roombooking');?>" class="active">Booking</a></li>
+                <li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
 							</ul>
 						</li>
 						
@@ -401,15 +401,88 @@
 					<!-- Simple Datatable start -->
 					<div class="card-box mb-30">
 						<div class="pd-20">
-							<h4 class="text-blue h4">Room</h4>
+							<h4 class="text-blue h4">Booking</h4>
 						</div>
 						<div class="pb-20">
-							<table class="data-table table stripe hover nowrap">
+							<table class="data-table table stripe hover nowrap ">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding: 15px">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Add">Add</button>
+              </div>
+              
+
+                <!-- Modal structure -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="<?=site_url('admin-insertroombooking');?>" method="POST">
+                                    <!-- Recipient input field -->
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Full Name:</label>
+                                        <input type="text" class="form-control" 
+                                        name="FullName" id="FullName" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Contact:</label>
+                                        <input type="text" class="form-control" name="ContactNumber" id="ContactNumber">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Address:</label>
+                                        <input type="text" class="form-control" 
+                                        name="Address" id="Address">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Room Typ:</label>
+                                        <input type="text" class="form-control" name="RoomType" id="RoomType">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Check In:</label>
+                                        <input
+                                          class="form-control datetimepicker"
+                                          placeholder="Choose Date and time"
+                                          type="text"
+                                          name="CheckinDate"
+										  id="CheckinDate"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Check Out:</label>
+                                        <input
+                                          class="form-control datetimepicker"
+                                          placeholder="Choose Date and time"
+                                          type="text"
+                                          name="CheckoutDate"
+										  id="CheckoutDate"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Number of Guest:</label>
+                                        <input type="text" class="form-control" name="NumberofGuest" id="NumberofGuest">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Total Amount:</label>
+                                        <input type="text" class="form-control" name="TotalAmount" id="TotalAmount">
+                                    </div>
+                                    <div class="modal-footer">
+										<!-- Close button -->
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										<!-- Send message button -->
+										<button type="submit" class="btn btn-primary">Add</button>
+									</div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+              
 								<thead>
 									<tr>
-										<th class="table-plus datatable-nosort">First Name</th>
-										<th>Last Name</th>
-                    <th>Email</th>
+										<th class="table-plus datatable-nosort">Full Name</th>
 										<th>Contact</th>
 										<th>Address</th>
 										<th>Room Type</th>
@@ -421,18 +494,16 @@
 									</tr>
 								</thead>
 								<tbody>
-                <?php foreach($books as $book):?>
+                					<?php foreach($books as $book):?>
 									<tr>
-										<td class="table-plus"><?=$book['FirstName']?></td>
-										<td><?=$book['LastName']?></td>
-										<td><?=$book['email']?></td>
+										<td class="table-plus"><?=$book['FullName']?></td>
 										<td><?=$book['ContactNumber']?></td>
-                    <td><?=$book['Address']?></td>
-                    <td><?=$book['RoomType']?></td>
-                    <td><?=$book['NumberofGuest']?></td>
-                    <td><?=$book['TotalAmount']?></td>
-                    <td><?=$book['CheckinDate']?></td>
-                    <td><?=$book['CheckoutDate']?></td>
+										<td><?=$book['Address']?></td>
+										<td><?=$book['RoomType']?></td>
+										<td><?=$book['NumberofGuest']?></td>
+										<td><?=$book['TotalAmount']?></td>
+										<td><?=$book['CheckinDate']?></td>
+										<td><?=$book['CheckoutDate']?></td>
 										<td>
 											<div class="dropdown">
 												<a
@@ -446,13 +517,10 @@
 												<div
 													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 												>
-													<a class="dropdown-item" href="#"
-														><i class="dw dw-eye"></i> View</a
-													>
-													<a class="dropdown-item" href="#"
+													<a class="dropdown-item" href="admin-booking/edit/<?=$book['ReservationId'];?>"
 														><i class="dw dw-edit2"></i> Edit</a
 													>
-													<a class="dropdown-item" href="#"
+													<a class="dropdown-item" href="admin-booking/delete/<?=$book['ReservationId'];?>"
 														><i class="dw dw-delete-3"></i> Delete</a
 													>
 												</div>
@@ -468,7 +536,28 @@
   
 			</div>
 		</div>
-		
+		<script>
+    // JavaScript to handle modal events
+    const exampleModal = document.getElementById('exampleModal');
+
+    if (exampleModal) {
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever');
+            
+            // Update the modal's content
+            const modalTitle = exampleModal.querySelector('.modal-title');
+            const modalBodyInput = exampleModal.querySelector('.modal-body ');
+
+            modalTitle.textContent = ` ${recipient}`;
+            modalBodyInput.value = recipient;
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 		<!-- js -->
 		<script src="public/admin/vendors/scripts/core.js"></script>
 		<script src="public/admin/vendors/scripts/script.min.js"></script>

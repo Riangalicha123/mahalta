@@ -42,5 +42,21 @@ class UserModel_model extends Model {
 
         return ($user) ? $user : false;
     } */
+    public function getUser(){
+        $data = $this->db->table('users')->select('UserId, username, email, role')
+        ->where('role', 'Guest')
+        ->get_all();
+        return $data;
+    }
+    public function getGuests(){
+        $data = $this->db->table('users')
+        ->select_count('*', 'role')
+        ->where('role', 'guest')
+        ->group_by('role')
+        ->get_all(); 
+return $data;
+    }
+    
 }
+    
 ?>

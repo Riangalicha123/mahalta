@@ -11,5 +11,11 @@ class Room_model extends Model {
         $data = $this->db->table('room')->get_all();
         return $data;
     }
+    public function getRoomTypeById($roomType) {
+        $roomData = $this->db->table('room')->where('RoomId', $roomType)->get();
+        return $roomData;
+    }
+
+
 }
 ?>

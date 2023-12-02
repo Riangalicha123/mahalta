@@ -40,7 +40,7 @@ class UserController extends Controller {
                     'username' => $this->io->post('username'),
                     'email' => $this->io->post('email'),
                     'password' => password_hash($this->io->post('password'),PASSWORD_BCRYPT),
-                    'role' => 'User',
+                    'role' => 'Guest',
                 ];
                 $this->Usermodel_model->register($data);
                 $this->session->set_flashdata('success', 'Registration succesful. ');
@@ -57,6 +57,7 @@ class UserController extends Controller {
                 redirect('login');
             } else {
                 echo $this->form_validation->errors();
+                
             } */
 /*         } */
     }
@@ -72,7 +73,7 @@ class UserController extends Controller {
 
             // Check the role and redirect accordingly
             $role = $user['role'];
-            if ($role === 'User') {
+            if ($role === 'Guest') {
                 redirect('');
             } elseif ($role === 'Admin') {
                 redirect('admin-dashboard');

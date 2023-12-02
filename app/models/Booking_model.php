@@ -9,12 +9,31 @@ class Booking_model extends Model {
     public function book()
     {        
         $data = $this->db->table('reservation')
-        ->select('reservation.ReservationId, users.UserId, users.email, room.RoomId, room.RoomType, reservation.FirstName,reservation.LastName, reservation.ContactNumber,reservation.Address, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount')
-        ->join('users', ' reservation.UserId = users.UserId')
-        ->join('room', ' reservation.RoomId = room.RoomId')
+        ->select('reservation.ReservationId,  reservation.UserId, reservation.FullName, reservation.ContactNumber,reservation.Address,reservation.RoomType, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount')
         ->get_all();
         return $data;
     }
+    public function insertBooking($data)
+    {
+        $bind = array(
+            'FullName' => $data['FullName'],
+            'ContactNumber' => $data['ContactNumber'],
+            'Address' => $data['Address'],
+            'RoomType' => $data['RoomType'],
+            'CheckinDate' => $data['CheckinDate'],
+            'CheckoutDate' => $data['CheckoutDate'],
+            'NumberofGuest' => $data['NumberofGuest'],
+            'TotalAmount' => $data['TotalAmount'],
+            );
+        
+        $this->db->table('reservation')->insert($bind);
+    }
+
+    public function search($ReservationId) {
+        return $this->db->table('reservation')->where('ReservationId',$ReservationId)->get();
+    }
+
+
 	
 }
 ?>

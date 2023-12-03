@@ -48,10 +48,15 @@
                               <?php else: ?>
                               <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
                               <?php endif; ?>
-                              <li class="nav-item">
-                              <button type="submit" class="nav-link"><i class="fa fa-search"></i></button>
-                              </li>
                               
+                              <li class="nav-item">
+                                 <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2 smaller-input" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-primary my-2 my-sm-0" type="submit">
+                                       <i class="fa fa-search"></i>
+                                    </button>
+                                 </form>
+                           </li>
                            </ul>
                         </div>
                      </nav>

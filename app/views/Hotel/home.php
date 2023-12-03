@@ -18,6 +18,7 @@
                            <div class="logo">
                               <a href="index.html"><img src="public/images/mahaltalogo.jpg" alt="#" /></a>
                            </div>
+                           
                         </div>
                      </div>
                   </div>
@@ -41,14 +42,23 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="/blog">Blog</a>
                               </li>
+                              
                               <?php if ($LAVA->is_logged_in()): ?>
                               <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>">Logout</a></li>
                               <?php else: ?>
                               <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
                               <?php endif; ?>
+                            
                               <li class="nav-item">
-                                 <button type="submit"><i class="fa fa-search"></i></button>
-                              </li>
+                                 <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2 smaller-input" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-primary my-2 my-sm-0" type="submit">
+                                       <i class="fa fa-search"></i>
+                                    </button>
+                                 </form>
+                           </li>
+                                                   
+
                            </ul>
                         </div>
                      </nav>

@@ -385,6 +385,7 @@
 							<ul class="submenu">
 								<li><a href="<?=site_url('admin-roombooking');?>" >Booking</a></li>
                 				<li><a href="<?=site_url('admin-guest');?> " class="active">Guest</a></li>
+								<li><a href="<?=site_url('admin-acceptance');?>">Acceptance</a></li>
 								<li><a href="<?=site_url('admin-feedback');?>">Feedback</a></li>
 							</ul>
 						</li>
@@ -411,7 +412,7 @@
 								<thead>
 									<tr>
 										<th class="table-plus datatable-nosort">#</th>
-										<th>Useername</th>
+										<th>Username</th>
 										<th>Email</th>
 										<th>Role</th>
 										<th class="datatable-nosort">Action</th>

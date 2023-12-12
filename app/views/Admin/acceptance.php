@@ -1,3 +1,4 @@
+@ -0,0 +1,586 @@
 <!DOCTYPE html>
 <html>
 	<head>
@@ -383,11 +384,10 @@
 								><span class="mtext">Hotel</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="<?=site_url('admin-roombooking');?>" class="active">Booking</a></li>
+								<li><a href="<?=site_url('admin-roombooking');?>" >Booking</a></li>
                 				<li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
-								<li><a href="<?=site_url('admin-acceptance');?>">Acceptance</a></li>
+								<li><a href="<?=site_url('admin-acceptance');?>"class="active">Acceptance</a></li>
 								<li><a href="<?=site_url('admin-feedback');?>">Feedback</a></li>
-								
 							</ul>
 						</li>
 						
@@ -408,91 +408,17 @@
 						</div>
 						<div class="pb-20">
 							<table class="data-table table stripe hover nowrap ">
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding: 15px">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="Add">Add</button>
-              </div>
-              
-
-                <!-- Modal structure -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="<?=site_url('admin-insertroombooking');?>" method="POST">
-                                    <!-- Recipient input field -->
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Full Name:</label>
-                                        <input type="text" class="form-control" 
-                                        name="FullName" id="FullName" >
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Contact:</label>
-                                        <input type="text" class="form-control" name="ContactNumber" id="ContactNumber">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Address:</label>
-                                        <input type="text" class="form-control" 
-                                        name="Address" id="Address">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Room Type:</label>
-                                        <input type="text" class="form-control" name="RoomType" id="RoomType">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Check In:</label>
-                                        <input
-                                          class="form-control datetimepicker"
-                                          placeholder="Choose Date and time"
-                                          type="text"
-                                          name="CheckinDate"
-										  id="CheckinDate"
-                                        />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Check Out:</label>
-                                        <input
-                                          class="form-control datetimepicker"
-                                          placeholder="Choose Date and time"
-                                          type="text"
-                                          name="CheckoutDate"
-										  id="CheckoutDate"
-                                        />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Number of Guest:</label>
-                                        <input type="text" class="form-control" name="NumberofGuest" id="NumberofGuest">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Total Amount:</label>
-                                        <input type="text" class="form-control" name="TotalAmount" id="TotalAmount">
-                                    </div>
-                                    <div class="modal-footer">
-										<!-- Close button -->
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<!-- Send message button -->
-										<button type="submit" class="btn btn-primary">Add</button>
-									</div>
-                                </form>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-              
 								<thead>
 									<tr>
 										<th class="table-plus datatable-nosort">Full Name</th>
 										<th>Contact</th>
 										<th>Address</th>
 										<th>Room Type</th>
-                    <th>Number Of Guest</th>
-                    <th>Total Amount</th>
-                    <th>Check In</th>
-                    <th>Check Out</th>
+										<th>Number Of Guest</th>
+										<th>Total Amount</th>
+										<th>Check In</th>
+										<th>Check Out</th>
+										<th class="datatable-nosort">Status</th>
 										<th class="datatable-nosort">Action</th>
 									</tr>
 								</thead>
@@ -507,26 +433,12 @@
 										<td><?=$book['TotalAmount']?></td>
 										<td><?=$book['CheckinDate']?></td>
 										<td><?=$book['CheckoutDate']?></td>
+										<td><?=$book['Status']?></td>	
+										
 										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="admin-booking/edit/<?=$book['ReservationId'];?>"
-														><i class="dw dw-edit2"></i> Edit</a
-													>
-													<a class="dropdown-item" href="admin-booking/delete/<?=$book['ReservationId'];?>"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
+											<div class="btn-group">
+												<button type="button" class="btn btn-success btn-sm status-btn" data-status="Accepted" data-reservation-id="<?=$book['ReservationId']?>">Accepted</button>
+												<button type="button" class="btn btn-danger btn-sm status-btn" data-status="Rejected" data-reservation-id="<?=$book['ReservationId']?>">Rejected</button>
 											</div>
 										</td>
 									</tr>
@@ -558,9 +470,9 @@
             modalBodyInput.value = recipient;
         });
     }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+			</script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 		<!-- js -->
 		<script src="public/admin/vendors/scripts/core.js"></script>
 		<script src="public/admin/vendors/scripts/script.min.js"></script>

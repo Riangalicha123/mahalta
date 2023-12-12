@@ -120,5 +120,18 @@ class AdminController extends Controller {
             $data['feedbacks'] = $this->Feedback_model->feedback();
             $this->call->view('Admin\feedback', $data);
         }
-}
+
+        public function acceptance(){   
+            
+                if (!$this->LAVA->is_logged_in()) {
+    
+                    $this->session->set_flashdata('errors', ['Login First']);
+                    redirect('login');
+                    return;
+                }
+                $data['books'] = $this->Booking_model->book();
+                $this->call->view('Admin\acceptance', $data);
+    
+            }
+    }
 ?>

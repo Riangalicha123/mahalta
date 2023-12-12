@@ -9,7 +9,7 @@ class Booking_model extends Model {
     public function book()
     {        
         $data = $this->db->table('reservation')
-        ->select('reservation.ReservationId,  reservation.UserId, reservation.FullName, reservation.ContactNumber,reservation.Address,reservation.RoomType, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount')
+        ->select('reservation.ReservationId,  reservation.UserId, reservation.FullName, reservation.ContactNumber,reservation.Address,reservation.RoomType, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount, reservation.Status')
         ->get_all();
         return $data;
     }
@@ -24,6 +24,7 @@ class Booking_model extends Model {
             'CheckoutDate' => $data['CheckoutDate'],
             'NumberofGuest' => $data['NumberofGuest'],
             'TotalAmount' => $data['TotalAmount'],
+            'Status' => 'Pending',
             );
         
         $this->db->table('reservation')->insert($bind);

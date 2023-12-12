@@ -3,7 +3,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+		<title>Admin</title>
 
 		<!-- Site favicon -->
 		<!-- <link
@@ -489,10 +489,10 @@
 										<th>Contact</th>
 										<th>Address</th>
 										<th>Room Type</th>
-                    <th>Number Of Guest</th>
-                    <th>Total Amount</th>
-                    <th>Check In</th>
-                    <th>Check Out</th>
+										<th>Number Of Guest</th>
+										<th>Total Amount</th>
+										<th>Check In</th>
+										<th>Check Out</th>
 										<th class="datatable-nosort">Action</th>
 									</tr>
 								</thead>

@@ -5,6 +5,7 @@ class UserModel_model extends Model {
 	public function __construct(){
         parent::__construct();
         $this->call->database();
+        
     }
 	public function register($data)
     {
@@ -56,6 +57,12 @@ class UserModel_model extends Model {
         ->get_all(); 
 return $data;
     }
+    public function getusername($username)
+{
+    // Use row() instead of get() to retrieve a single row
+    return $this->db->table('users')->where('username', $username)->get();
+}
+
     
 }
     

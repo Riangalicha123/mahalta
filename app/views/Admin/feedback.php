@@ -3,7 +3,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+		<title>Admin</title>
 
 		<!-- Site favicon -->
 		<!-- <link
@@ -383,9 +383,8 @@
 								><span class="mtext">Hotel</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="<?=site_url('admin-roombooking');?>"">Booking</a></li>
+								<li><a href="<?=site_url('admin-roombooking');?>">Booking</a></li>
                                 <li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
-								<li><a href="<?=site_url('admin-acceptance');?>">Acceptance</a></li>
                                 <li><a href="<?=site_url('admin-feedback');?>" class="active">Feedback</a></li>
 							</ul>
 						</li>

@@ -8,24 +8,40 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-md-6">
-                  <form id="request" class="main_form">
-                     <div class="row">
-                        <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Name" type="type" name="Name"> 
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
-                        </div>
-                        <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message</textarea>
-                        </div>
-                        <div class="col-md-12">
-                           <button class="send_btn">Send</button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
+            <?php if ($LAVA->is_logged_in()): ?>
+   <div class="col-md-6">
+      <form action="postFeedback" method="post" id="request" class="main_form">
+         <div class="row">
+            <div class="col-md-12">
+               <input class="contactus" placeholder="Username" type="text" name="username" value="<?= $_SESSION['username'] ?? ''; ?>"> 
+            </div>
+            <div class="col-md-12">
+               <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+            </div>
+            <div class="col-md-12">
+               <button class="send_btn">Send</button>
+            </div>
+         </div>
+      </form>
+   </div>
+<?php else: ?>
+   <div class="col-md-6">
+      <form action="" method="post" id="request" class="main_form">
+         <div class="row">
+            <div class="col-md-12">
+               <input class="contactus" placeholder="Username" type="text" name="username"> 
+            </div>
+            <div class="col-md-12">
+               <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+            </div>
+            <div class="col-md-12">
+               <button class="send_btn">Send</button>
+            </div>
+         </div>
+      </form>
+   </div>
+<?php endif; ?>
+
                <div class="col-md-6">
                   <div class="map_main">
                      <div class="map-responsive">

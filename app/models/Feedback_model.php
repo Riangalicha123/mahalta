@@ -14,20 +14,12 @@ class Feedback_model extends Model {
         ->get_all();
         return $data;
     }
-    public function insertBooking($data)
-    {
-        $bind = array(
-            'FullName' => $data['FullName'],
-            'ContactNumber' => $data['ContactNumber'],
-            'Address' => $data['Address'],
-            'RoomType' => $data['RoomType'],
-            'CheckinDate' => $data['CheckinDate'],
-            'CheckoutDate' => $data['CheckoutDate'],
-            'NumberofGuest' => $data['NumberofGuest'],
-            'TotalAmount' => $data['TotalAmount'],
-            );
-        
-        $this->db->table('reservation')->insert($bind);
-    }
+    public function insertFeedback($data)
+{
+    $this->db->table('feedback')->insert($data);
+}
+
+    
+    
 }
 ?>

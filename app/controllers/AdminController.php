@@ -120,6 +120,40 @@ class AdminController extends Controller {
             $data['feedbacks'] = $this->Feedback_model->feedback();
             $this->call->view('Admin\feedback', $data);
         }
+        public function postFeedback() {
+            // Validate the form
+            if ($this->form_validation->run() == false) {
+                $_SESSION['errors'] = $this->form_validation->get_errors();
+                $this->session->mark_as_flash('errors');
+                redirect('');
+            } else {
+                // Extract message and username from the form
+                $data = [
+                    'Message' => $this->io->post('Message'), // Fix the input method
+                ];
+        
+                $username = $this->io->post('username'); // Fix the input method
+        
+                // Check if the username exists in the Usermodel_model
+                $user = $this->Usermodel_model->getusername($username);
+        
+                if ($user) {
+                    $data['UserId'] = $user['UserId']; // Assuming UserId is a property of the user object
+                    $inserted = $this->Feedback_model->insertfeedback($data);
+        
+                    if ($inserted) {
+                        $this->session->set_flashdata('success', 'Successfully inserted.');
+                        redirect('room');
+                    } else {
+                        $this->session->set_flashdata('error', 'Insertion failed.');
+                        redirect('');
+                    }
+                } else {
+                    $this->session->set_flashdata('error', 'Username not found.');
+                    redirect('');
+                }
+            }
+        }
 
         public function acceptance(){   
             
@@ -129,7 +163,7 @@ class AdminController extends Controller {
                     redirect('login');
                     return;
                 }
-                $data['books'] = $this->Booking_model->book();
+                $data['books'] = $this->Booking_model->acceptance();
                 $this->call->view('Admin\acceptance', $data);
     
             }

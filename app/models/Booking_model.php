@@ -9,6 +9,13 @@ class Booking_model extends Model {
     public function book()
     {        
         $data = $this->db->table('reservation')
+        ->select('reservation.ReservationId,  reservation.UserId, reservation.FullName, reservation.ContactNumber,reservation.Address,reservation.RoomType, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount')
+        ->get_all();
+        return $data;
+    }
+    public function acceptance()
+    {        
+        $data = $this->db->table('reservation')
         ->select('reservation.ReservationId,  reservation.UserId, reservation.FullName, reservation.ContactNumber,reservation.Address,reservation.RoomType, reservation.CheckinDate, reservation.CheckoutDate, reservation.NumberofGuest, reservation.TotalAmount, reservation.Status')
         ->get_all();
         return $data;

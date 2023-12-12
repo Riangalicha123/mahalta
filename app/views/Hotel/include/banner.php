@@ -60,53 +60,48 @@
                                 </div>
                            </div>
                         </form> -->
-                        <div class="container">
-                        <form class="room_reservation_form">
-                           <div class="row">
-                           <div class="col-md-12 mb-3">
+                        <form class="room_reservation_form" action="<?=site_url('insertroom');?>" method="POST">
+                           <div class="row " >
+                           <div class="col-md-6">
                                     <label for="full_name">Full Name</label>
-                                    <input class="form-control" type="text" name="full_name" required>
-                                 </div>
-                                 
-                                 
-                                 <div class="col-md-6 mb-3">
-                                    <label for="contact_number">Contact Number</label>
-                                    <input class="form-control" type="tel" name="contact_number" required>
-                                 </div>
-                                 <div class="col-md-6 mb-3">
-                                    <label for="address">Address</label>
-                                    <input class="form-control" type="text" name="address" required>
-                                 </div>
-                                 <div class="col-md-6 mb-3">
-                                    <label for="arrival_date">Check In Date</label>
-                                    <input class="form-control" type="date" name="arrival_date" required>
-                                 </div>
-                                 <div class="col-md-6 mb-3">
-                                    <label for="departure_date">Check Out Date</label>
-                                    <input class="form-control" type="date" name="departure_date" required>
-                                 </div>
-                                 <div class="col-md-6 mb-3">
-                                    <label for="capacity">Number of Guests</label>
-                                    <input class="form-control" type="number" name="capacity" min="1" required>
-                                 </div>
-                                 <div class="col-md-6 mb-3">
-                                    <label for="room_type">Room Type</label>
-                                    <select class="form-control" name="room_type" required>
-                                       <option value="option"></option>
-                                       <option value="deluxe">Deluxe Room</option>
-                                       <option value="executive">Executive Room</option>
-                                       <option value="premium">Premium Room</option>
-                                       <option value="family">Family Room</option>
-                                       <option value="boutique">Boutique Room</option>
-                                       <option value="presidential">Presidential Room</option>
-                                    </select>
-                                 </div>
-                                       <div class="col-md-12 text-center">
-                                 <button class="btn btn-primary w-100" type="submit">Book Now</button>
+                                    <input class="online_book" type="text" name="FullName" required>
                               </div>
-                                    </div>
-                           </form>
-                        </div>
+                              <div class="col-md-6">
+                                    <label for="full_name">Contact</label>
+                                    <input class="online_book" type="text" name="ContactNumber" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="full_name">Address</label>
+                                    <input class="online_book" type="text" name="Address" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="contact_number">Room Type</label>
+                                    <input class="online_book" type="text" name="RoomType" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="full_name">Check In</label>
+                                    <input class="online_book"  type="text" name="CheckinDate" placeholder="Year-Month-Day 00:00:00" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="full_name">Check Out</label>
+                                    <input class="online_book" class="form-control datetimepicker"
+                                    type="text" name="CheckoutDate" placeholder="Year-Month-Day 00:00:00" required>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                    <label for="capacity">Number of Guest</label>
+                                    <input class="online_book" type="number" name="NumberofGuest" min="1" required>
+                              </div>
+                              <div class="col-md-6">
+                                    <label for="capacity">Amount</label>
+                                    <input class="online_book" type="number" name="TotalAmount" min="1" required>
+                              </div>
+                              <div class="col-md-12">
+                                 
+                                    <button class="book_btn" type="submit">Book Now</button>
+                              </div>
+                           </div>
+                        </form>
 
                      </div>
                   </div>
@@ -114,3 +109,4 @@
             </div>
          </div>
       </section>
+      

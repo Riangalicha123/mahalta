@@ -383,9 +383,9 @@
 								><span class="mtext">Hotel</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="<?=site_url('admin-roombooking');?>" >Booking</a></li>
-                				<li><a href="<?=site_url('admin-guest');?> " class="active">Guest</a></li>
-								<li><a href="<?=site_url('admin-feedback');?>">Feedback</a></li>
+								<li><a href="<?=site_url('admin-roombooking');?>" class="active">Booking</a></li>
+                                <li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
+                                <li><a href="<?=site_url('admin-feedback');?>" class="active">Feedback</a></li>
 							</ul>
 						</li>
 						
@@ -406,43 +406,22 @@
 						</div>
 						<div class="pb-20">
 							<table class="data-table table stripe hover nowrap ">
-              
+             
               
 								<thead>
 									<tr>
 										<th class="table-plus datatable-nosort">#</th>
-										<th>Useername</th>
-										<th>Email</th>
-										<th>Role</th>
-										<th class="datatable-nosort">Action</th>
+										<th>Username</th>
+										<th>Message</th>
 									</tr>
 								</thead>
 								<tbody>
-                					<?php foreach($data as $guest):?>
+                					<?php foreach($feedbacks as $feedback):?>
 									<tr>
-										<td class="table-plus"><?=$guest['UserId']?></td>
-										<td><?=$guest['username']?></td>
-										<td><?=$guest['email']?></td>
-										<td><?=$guest['role']?></td>
-										<td>
-											<div class="dropdown">
-												<a
-													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-													href="#"
-													role="button"
-													data-toggle="dropdown"
-												>
-													<i class="dw dw-more"></i>
-												</a>
-												<div
-													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-												>
-													<a class="dropdown-item" href="admin-guest/delete/<?=$guest['UserId'];?>"
-														><i class="dw dw-delete-3"></i> Delete</a
-													>
-												</div>
-											</div>
-										</td>
+										<td class="table-plus"><?=$feedback['FeedbackId']?></td>
+										<td><?=$feedback['username']?></td>
+										<td><?=$feedback['Message']?></td>
+										
 									</tr>
 									<?php endforeach;?>
 								</tbody>

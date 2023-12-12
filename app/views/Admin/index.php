@@ -457,6 +457,7 @@
 							<ul class="submenu">
 								<li><a href="<?=site_url('admin-roombooking');?>">Booking</a></li>
                 				<li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
+								<li><a href="<?=site_url('admin-feedback');?>">Feedback</a></li>
 							</ul>
 						</li>
 						

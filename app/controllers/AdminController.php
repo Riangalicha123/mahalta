@@ -6,6 +6,7 @@ class AdminController extends Controller {
         parent::__construct();
         $this->call->model('Usermodel_model');
         $this->call->model('Booking_model');
+        $this->call->model('Feedback_model');
         $this->LAVA = lava_instance();
     }
 	public function dashboard(){
@@ -106,6 +107,18 @@ class AdminController extends Controller {
                 'edit' => $this->Booking_model->book($ReservationId),
             ];
             $this->call->view('Admin\booking', $data);
+        }
+        public function getFeedback(){
+            if (!$this->LAVA->is_logged_in()) {
+    
+                $this->session->set_flashdata('errors', ['Login First']);
+                redirect('login');
+                return;
+                
+            }
+    
+            $data['feedbacks'] = $this->Feedback_model->feedback();
+            $this->call->view('Admin\feedback', $data);
         }
 }
 ?>

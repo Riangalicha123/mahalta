@@ -48,14 +48,15 @@
                               <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
                               <?php endif; ?>
                               <li class="nav-item">
-                                 <form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2 smaller-input" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-primary my-2 my-sm-0" type="submit">
-                                       <i class="fa fa-search"></i>
-                                    </button>
-                                 </form>
-                           </li>
+                                 <!-- Inside the form tag -->
+<form class="form-inline my-2 my-lg-0" onsubmit="searchAndScroll(); return false;">
+   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+   <button class="btn btn-outline-info my-2 my-sm-0" type="submit" id="searchButton">
+      <i class="fa fa-search"></i>
+   </button>
+</form>
 
+                              </li>
                            </ul>
                         </div>
                      </nav>
@@ -110,4 +111,34 @@
       <!-- Javascript files-->
       <?php include 'include/bottomnav.php'?>
    </body>
+   <script>
+   function searchAndScroll() {
+      // Get the value from the search input
+      var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      // Map search terms to corresponding section IDs
+      var sectionMappings = {
+         'deluxe': 'deluxe',
+         'executive': 'executive',
+         'premium': 'premium',
+         'family': 'family',
+         'boutique': 'boutique',
+         'presidential': 'presidential',
+         // Add more mappings as needed
+      };
+
+      // Check if the search term is in the mappings
+      if (sectionMappings.hasOwnProperty(searchTerm)) {
+         // Get the corresponding section ID
+         var sectionId = sectionMappings[searchTerm];
+
+         // Scroll to the section using smooth scrolling
+         document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+      } else {
+         // Handle the case when the search term doesn't match any section
+         alert('Section not found for the given search term.');
+      }
+   }
+</script>
+
 </html>

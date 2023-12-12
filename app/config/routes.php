@@ -64,3 +64,5 @@ $router->get('/admin-roombooking', 'AdminController::booking');
 $router->post('/admin-insertroombooking', 'AdminController::insertbook');
 $router->get('/admin-booking/delete/(:num)', 'AdminController::delete_booking');
 $router->get('/admin-booking/edit/(:num)', 'AdminController::edit_booking');
+
+$router->get('/admin-feedback', 'AdminController::getFeedback');

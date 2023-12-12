@@ -449,7 +449,7 @@ button {
 
 .titlepage h2::before {
      position: absolute;
-     
+     content: "";
      background-color: skyblue;
      width: 20px;
      height: 4px;
@@ -458,7 +458,7 @@ button {
 
 .titlepage h2::after {
      position: absolute;
-    
+     content: "";
      background-color: skyblue;
      width: 20px;
      height: 4px;

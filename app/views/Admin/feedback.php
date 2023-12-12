@@ -383,9 +383,10 @@
 								><span class="mtext">Hotel</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="<?=site_url('admin-roombooking');?>">Booking</a></li>
-                                <li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
-                                <li><a href="<?=site_url('admin-feedback');?>" class="active">Feedback</a></li>
+							<li><a href="<?=site_url('admin-roombooking');?>" >Booking</a></li>
+                				<li><a href="<?=site_url('admin-guest');?>">Guest</a></li>
+								<li><a href="<?=site_url('admin-acceptance');?>">Acceptance</a></li>
+								<li><a href="<?=site_url('admin-feedback');?>" class="active">Feedback</a></li>
 							</ul>
 						</li>
 						

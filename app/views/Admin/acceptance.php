@@ -432,12 +432,38 @@
 										<td><?=$book['TotalAmount']?></td>
 										<td><?=$book['CheckinDate']?></td>
 										<td><?=$book['CheckoutDate']?></td>
-										<td><?=$book['Status']?></td>	
-										
-										<td>
-											<div class="btn-group">
-												<button type="button" class="btn btn-success btn-sm status-btn" data-status="Accepted" data-reservation-id="<?=$book['ReservationId']?>">Accepted</button>
-												<button type="button" class="btn btn-danger btn-sm status-btn" data-status="Rejected" data-reservation-id="<?=$book['ReservationId']?>">Rejected</button>
+										<td class="project-state">
+											<?php
+											$badgeClass = '';
+
+											switch ($book['Status']) {
+												case 'Confirm':
+													$badgeClass = 'badge-success';
+													break;
+												case 'Pending':
+													$badgeClass = 'badge-warning';
+													break;
+												case 'Cancel':
+													$badgeClass = 'badge-danger';
+													break;
+												default:
+													$badgeClass = 'badge-secondary'; // Default class for other cases
+											}
+											?>
+											<span class="badge <?= $badgeClass ?>"><?= $book['Status'] ?></span>
+										</td>
+										<td class="project-state">
+											<div class="dropdown">
+												<button class="btn btn-secondary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<!-- Three dots icon -->
+													<i class="fas fa-ellipsis-v"></i>
+												</button>
+												<div class="dropdown-menu" aria-labelledby="statusDropdown">
+												<!-- Inside the dropdown menu in your HTML template -->
+												<a class="dropdown-item" href="<?= site_url ("admin-status/Confirm/{$book['ReservationId']}") ?>">Confirm</a>
+												<a class="dropdown-item" href="<?= site_url ("admin-status/Pending/{$book['ReservationId']}") ?>">Pending</a>
+												<a class="dropdown-item" href="<?= site_url ("admin-status/Cancel/{$book['ReservationId']}") ?>">Cancel</a>
+												</div>
 											</div>
 										</td>
 									</tr>

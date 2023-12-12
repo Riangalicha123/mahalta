@@ -167,5 +167,34 @@ class AdminController extends Controller {
                 $this->call->view('Admin\acceptance', $data);
     
             }
+            public function updateStatus($status, $reservationID)
+            {
+                // Validate the status
+                $allowedStatuses = ['Confirm', 'Pending', 'Cancel'];
+                if (!in_array($status, $allowedStatuses)) {
+                    // Handle invalid status (you may redirect or show an error message)
+                    $this->session->set_flashdata('error', 'Status not found.');
+                    redirect('admin-dashboard');
+                }
+            
+                // Get the reservation data
+                $reservation = $this->Booking_model->getReservationById($reservationID);
+            
+                // Check if the reservation exists
+                if (!$reservation) {
+                    // Handle non-existent reservation (you may redirect or show an error message)
+                    $this->session->set_flashdata('error', 'Insertion failed.');
+                        redirect('');
+                }
+            
+                // Update the reservation status in the database
+                $updateData = ['Status' => $status];
+                $this->Booking_model->updateReservation($reservationID, $updateData);
+            
+                // Redirect to the reservation page or wherever appropriate
+                $this->session->set_flashdata('success', 'Successfully inserted.');
+                redirect('room');
+            }
+            
     }
 ?>

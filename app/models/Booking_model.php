@@ -40,7 +40,13 @@ class Booking_model extends Model {
     public function search($ReservationId) {
         return $this->db->table('reservation')->where('ReservationId',$ReservationId)->get();
     }
+    public function getReservationById($reservationID){
+        return $this->db->table('reservation')->where('ReservationId', $reservationID)->get();
+    }
 
+    public function updateReservation($reservationID, $updateData){
+        $this->db->table('reservation')->where('ReservationId', $reservationID)->update($updateData);
+    }
 
 	
 }

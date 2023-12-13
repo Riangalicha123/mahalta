@@ -68,4 +68,4 @@ $router->get('/admin-booking/edit/(:num)', 'AdminController::edit_booking');
 $router->get('/admin-feedback', 'AdminController::getFeedback');
 $router->post('/postFeedback', 'AdminController::postFeedback');
 $router->get('/admin-acceptance', 'AdminController::acceptance');
-$router->match('/admin-status/(:segment)/(:num)', 'AdminController::updateStatus', 'GET|POST');
+$router->get('/admin-status/(:any)/(:any)', 'AdminController::updateStatus');

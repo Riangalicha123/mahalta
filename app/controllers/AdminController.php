@@ -193,7 +193,7 @@ class AdminController extends Controller {
             
                 // Redirect to the reservation page or wherever appropriate
                 $this->session->set_flashdata('success', 'Successfully inserted.');
-                redirect('room');
+                redirect('admin-acceptance');
             }
             
     }

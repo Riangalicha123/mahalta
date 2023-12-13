@@ -385,6 +385,8 @@
 							<ul class="submenu">
 								<li><a href="<?=site_url('admin-room');?>" class="active" >Room</a></li>
 								<li><a href="<?=site_url('admin-roombooking');?>">Booking</a></li>
+								<li><a href="<?=site_url('admin-acceptance');?>">Acceptance</a></li>
+								<li><a href="<?=site_url('admin-feedback');?>">Feedback</a></li>
 							</ul>
 						</li>
 						

@@ -196,7 +196,11 @@
             </div>
          </div>
       </div>
-      <div class="pb-20">
+      <div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text-blue h4 text-center">Feedback</h4>
+						</div>
+						<div class="pb-20">
 							<table class="data-table table stripe hover nowrap ">
              
               
@@ -217,6 +221,7 @@
 								</tbody>
 							</table>
 						</div>
+					</div>
       
       <!-- end feedback -->
       <!--  footer -->

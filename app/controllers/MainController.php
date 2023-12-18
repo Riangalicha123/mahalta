@@ -6,6 +6,7 @@ class MainController extends Controller {
         parent::__construct();
         $this->call->model('Usermodel_model');
         $this->call->model('Booking_model');
+        $this->call->model('Feedback_model');
         $this->LAVA = lava_instance();
     }
 	public function home() {
@@ -16,8 +17,8 @@ class MainController extends Controller {
             return;
         }
 
-
-        $this->call->view('Hotel/home');
+        $data['feedbackss'] = $this->Feedback_model->feedback();
+        $this->call->view('Hotel/home', $data);
     }
     
     public function room(){

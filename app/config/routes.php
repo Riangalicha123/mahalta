@@ -69,3 +69,4 @@ $router->get('/admin-feedback', 'AdminController::getFeedback');
 $router->post('/postFeedback', 'AdminController::postFeedback');
 $router->get('/admin-acceptance', 'AdminController::acceptance');
 $router->get('/admin-status/(:any)/(:any)', 'AdminController::updateStatus');
+

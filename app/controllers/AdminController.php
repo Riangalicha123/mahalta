@@ -86,6 +86,7 @@ class AdminController extends Controller {
                 'CheckoutDate' => $checkOut,
                 'NumberofGuest' => $this->io->post('NumberofGuest'),
                 'TotalAmount' => $this->io->post('TotalAmount'),
+                'Status' => 'Pending',
             ];
 
                 $this->Booking_model->insertBooking($data);
@@ -195,6 +196,7 @@ class AdminController extends Controller {
                 $this->session->set_flashdata('success', 'Successfully inserted.');
                 redirect('admin-acceptance');
             }
+            
             
     }
 ?>

@@ -53,9 +53,37 @@
    <button class="btn btn-outline-info my-2 my-sm-0" type="submit" id="searchButton">
       <i class="fa fa-search"></i>
    </button>
+   
 </form>
 
                               </li>
+                              <li class="nav-item">
+    <button type="button" class="btn btn-outline" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-bell"></i>
+    </button>
+</li>
+                               
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                            </ul>
                         </div>
                      </nav>
@@ -114,7 +142,82 @@
       <?php include 'include/blog.php'?>
       <!-- end blog -->
       <!--  feedback -->
-      <?php include 'include/feedback.php'?>
+      <div class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Feedback</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+            <?php if ($LAVA->is_logged_in()): ?>
+   <div class="col-md-6">
+      <form action="postFeedback" method="post" id="request" class="main_form">
+         <div class="row">
+            <div class="col-md-12">
+               <input class="contactus" placeholder="Username" type="text" name="username" value="<?= $_SESSION['username'] ?? ''; ?>"> 
+            </div>
+            <div class="col-md-12">
+               <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+            </div>
+            <div class="col-md-12">
+               <button class="send_btn">Send</button>
+            </div>
+         </div>
+      </form>
+   </div>
+<?php else: ?>
+   <div class="col-md-6">
+      <form action="" method="post" id="request" class="main_form">
+         <div class="row">
+            <div class="col-md-12">
+               <input class="contactus" placeholder="Username" type="text" name="username"> 
+            </div>
+            <div class="col-md-12">
+               <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+            </div>
+            <div class="col-md-12">
+               <button class="send_btn">Send</button>
+            </div>
+         </div>
+      </form>
+   </div>
+<?php endif; ?>
+
+               <div class="col-md-6">
+                  <div class="map_main">
+                     <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7761.750176350001!2d121.20824972542549!3d13.42005806230071!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bce9395c682133%3A0x2a54eb8df931b1c2!2sMahalta%20Resorts%20and%20Convention%20Center!5e0!3m2!1sen!2sph!4v1700304323303!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="pb-20">
+							<table class="data-table table stripe hover nowrap ">
+             
+              
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Message</th>
+									</tr>
+								</thead>
+								<tbody>
+                					<?php foreach($feedbackss as $feedback):?>
+									<tr>
+										<td><?=$feedback['username']?></td>
+										<td><?=$feedback['Message']?></td>
+										
+									</tr>
+									<?php endforeach;?>
+								</tbody>
+							</table>
+						</div>
+      
       <!-- end feedback -->
       <!--  footer -->
       <?php include 'include/footer.php'?>

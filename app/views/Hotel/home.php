@@ -58,14 +58,14 @@
 
                               </li>
                               <li class="nav-item">
-    <button type="button" class="btn btn-outline" data-toggle="modal" data-target="#exampleModal">
+  <!--   <button type="button" class="btn btn-outline" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-bell"></i>
-    </button>
+    </button> -->
 </li>
                                
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
                            </ul>
                         </div>
                      </nav>
@@ -142,6 +142,51 @@
       <?php include 'include/blog.php'?>
       <!-- end blog -->
       <!--  feedback -->
+      
+     <!-- Centered video section with design and blurred background -->
+<section class="video_section text-center" style="background-image: url('public/images/1.jpg'); background-size: cover; background-position: center; padding: 60px 0; position: relative;">
+   <div class="background-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(248, 248, 248, 0.8); backdrop-filter: blur(.5px);"></div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="titlepage">
+             
+               <h2 style="color: black; font-size: 36px; font-weight: bold;">Video Section</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
+            <!-- Add your video embed code here -->
+            <div class="video-container" id="videoContainer">
+               <div class="video-icon" onclick="playVideo()"></div>
+               <video width="1000" height="300" controls id="videoElement" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                  <source src="movie.mp4" type="video/mp4">
+                  <source src="movie.ogg" type="video/ogg">
+                  Your browser does not support the video tag.
+               </video>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- end centered video section with design and blurred background -->
+
+<script>
+   function playVideo() {
+      var videoElement = document.getElementById('videoElement');
+
+      // Toggle between playing and pausing the video
+      if (videoElement.paused) {
+         videoElement.play();
+      } else {
+         videoElement.pause();
+      }
+   }
+</script>
+
+
+    
       <div class="contact">
          <div class="container">
             <div class="row">
@@ -196,32 +241,30 @@
             </div>
          </div>
       </div>
-      <div class="card-box mb-30">
-						<div class="pd-20">
-							<h4 class="text-blue h4 text-center">Feedback</h4>
-						</div>
-						<div class="pb-20">
-							<table class="data-table table stripe hover nowrap ">
-             
-              
-								<thead>
-									<tr>
-										<th>Username</th>
-										<th>Message</th>
-									</tr>
-								</thead>
-								<tbody>
-                					<?php foreach($feedbackss as $feedback):?>
-									<tr>
-										<td><?=$feedback['username']?></td>
-										<td><?=$feedback['Message']?></td>
-										
-									</tr>
-									<?php endforeach;?>
-								</tbody>
-							</table>
-						</div>
-					</div>
+      <!-- Centered Testimonial section with card design and effects -->
+<section class="testimonial_section bg-light py-5">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-md-12 text-center mb-4">
+            <h2 class="text-blue h2">Testimonials</h2>
+         </div>
+         <?php foreach ($feedbackss as $feedback): ?>
+            <div class="col-md-4 mb-4">
+               <div class="card testimonial-card shadow">
+                  <div class="card-body">
+                     <p class="card-text"><?=$feedback['Message']?></p>
+                  </div>
+                  <div class="card-footer text-center">
+                     <small class="text-muted"><?=$feedback['username']?></small>
+                  </div>
+               </div>
+            </div>
+         <?php endforeach; ?>
+      </div>
+   </div>
+</section>
+<!-- End centered Testimonial section with card design and effects -->
+
       
       <!-- end feedback -->
       <!--  footer -->

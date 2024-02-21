@@ -66,10 +66,12 @@
                                     <label for="full_name">Full Name</label>
                                     <input class="online_book" type="text" name="FullName" required>
                               </div>
+                              
                               <div class="col-md-6">
                                     <label for="full_name">Contact</label>
                                     <input class="online_book" type="text" name="ContactNumber" required>
                               </div>
+                              
                               <div class="col-md-6">
                                     <label for="full_name">Address</label>
                                     <input class="online_book" type="text" name="Address" required>
@@ -96,11 +98,12 @@
                                     <label for="capacity">Amount</label>
                                     <input class="online_book" type="number" name="TotalAmount" min="1" required>
                               </div>
-                              <div class="col-md-12">
-                                 
+                            <!--   <div class="col-md-12">
                                     <button class="book_btn" type="submit">Book Now</button>
-                              </div>
+                              </div> -->
+                             
                            </div>
+                           <button class="book_btn" type="submit">Book Now</button>
                         </form>
 
                      </div>

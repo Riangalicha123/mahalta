@@ -254,9 +254,10 @@
                   <div class="card-body">
                      <p class="card-text"><?=$feedback['Message']?></p>
                   </div>
-                  <div class="card-footer text-center">
-                     <small class="text-muted"><?=$feedback['username']?></small>
-                  </div>
+                  <div style="background-color: light gray; color: #6c757d; padding: 10px;" class="card-footer text-center">
+   <small class="text-muted"><?=$feedback['username']?></small>
+</div>
+
                </div>
             </div>
          <?php endforeach; ?>
